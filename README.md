@@ -16,7 +16,7 @@ values for database and api conection should be store in a file named .env, fast
 
 ## Endpoints
 
-There are two endpoint to be executed
+There are four endpoint to be executed
 
 >http://127.0.0.1:8000/contact/create/hubspot
 
@@ -32,6 +32,14 @@ For this one a example of request body is this
     }
 
 >http://127.0.0.1:8000/contact/sync/hubspot_clickup
+
+And these two can be used to debug this implementation
+
+>http://127.0.0.1:8000/contact
+
+>http://127.0.0.1:8000/task
+
+Contact will work for fetch contacts from hubspot and task for fetch "contacts" from clickup platform, they don't have any parameters
 
 ## Logs
 
