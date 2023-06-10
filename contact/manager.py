@@ -17,6 +17,11 @@ class ContactManager:
         ).filter_by(**filters).all()
 
     def update(self, filters: dict, new_values: dict):
+        """
+        Updates an existing contact object in the database given a kwargs dict
+        :param filters, dict, values to filter contact required
+        :param new_values, dict, values to set on the contact
+        """
         contact_object = self.db.query(Contact).filter_by(
             **filters
         ).first()
@@ -29,6 +34,15 @@ class ContactManager:
         return contact_object
 
     def save(self, email: str, firstname: str, lastname: str, phone: str, website: str, status_clickup: bool):
+        """
+        Stores a contact object in the database given the values
+        :param email, str, email value for contact to store
+        :param firstname, str, email value for contact to store
+        :param lastname, str, email value for contact to store
+        :param phone, str, email value for contact to store
+        :param website, str, email value for contact to store
+        :param status_clickup, bool, boolean flag for sync with clickup
+        """
         contact_object=Contact(
             email=email,
             firstname=firstname,

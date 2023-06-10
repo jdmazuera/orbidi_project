@@ -6,6 +6,10 @@ Dependencies required to run it are store and defined in requirements.txt, to in
 
 >pip install -r requirements.txt
 
+After install dependencies you can run the project with this command
+
+>uvicorn main:app --reload
+
 ## Credentials
 
 values for database and api conection should be store in a file named .env, fastapi will take the required keys

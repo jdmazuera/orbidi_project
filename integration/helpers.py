@@ -41,8 +41,7 @@ class HubspotHelper:
 
     def fetch_contacts(self):
         """
-        Creates contact on hubspot platform
-        param: filters, dict with parameters to filter contacts
+        Fetchs contacts on hubspot platform
         """
         response = self.hubspot_api.crm.contacts.get_all()
 
@@ -60,7 +59,14 @@ class ClickupHelper:
         }
 
     def create_task(self, email: str, firstname: str, lastname: str, phone: str, website: str):
-
+        """
+        Creates tasks on clickup platform list
+        param: email, email from contact to be created
+        param: firstname, first name of contact to be created
+        param: lastname, last name of contact to be created
+        param: phone, phone of contact to be created
+        param: website, website of contact to be created
+        """
         payload = {
             "name": email,
             "description": f"{firstname} {lastname} {phone} {website}",
@@ -77,5 +83,18 @@ class ClickupHelper:
         if not response_json.get('id'):
             raise Exception(
                 f"Please check payload data, it is not compatible with clickup {response.json()}")
+
+        return response_json
+
+    def fetch_tasks(self):
+        """
+        Fetchs tasks on clickup platform
+        """
+        response = requests.get(
+            self.url,
+            headers=self.headers,
+        )
+
+        response_json = response.json()
 
         return response_json
